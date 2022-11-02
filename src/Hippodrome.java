@@ -17,6 +17,7 @@ public class Hippodrome {
         Hippodrome hippodrome = new Hippodrome(horses);
         game = hippodrome;
         game.run();
+        game.printWinner();
     }
 
     public void run() {
@@ -42,16 +43,33 @@ public class Hippodrome {
         for (Horse horse :horses) {
             horse.print();
         }
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+    }
+
+    public Horse getWinner() {
+        Horse winner = null;
+        double maxdist = 0;
+        for (Horse horse :horses) {
+            if (horse.getDistance() > maxdist) {
+                winner = horse;
+                maxdist = horse.getDistance();
+            }
+        }
+
+        return winner;
+    }
+
+    public void printWinner() {
+        System.out.println("Winner is " + getWinner().getName() + "!");
     }
 
     public Hippodrome(List horses) {
